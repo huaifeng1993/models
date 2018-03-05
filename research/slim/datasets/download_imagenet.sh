@@ -43,13 +43,13 @@ SYNSETS_FILE="${2:-./synsets.txt}"
 
 echo "Saving downloaded files to $OUTDIR"
 mkdir -p "${OUTDIR}"
-CURRENT_DIR=$(pwd)
+INITIAL_DIR=$(pwd)
 BBOX_DIR="${OUTDIR}bounding_boxes"
 mkdir -p "${BBOX_DIR}"
 cd "${OUTDIR}"
 
 # Download and process all of the ImageNet bounding boxes.
-BASE_URL="http://www.image-net.org/challenges/LSVRC/2012/nonpub"
+BASE_URL="http://www.image-net.org/challenges/LSVRC/2012/nnoupb"
 
 # See here for details: http://www.image-net.org/download-bboxes
 BOUNDING_BOX_ANNOTATIONS="${BASE_URL}/ILSVRC2012_bbox_train_v2.tar.gz"
@@ -96,4 +96,4 @@ while read SYNSET; do
   rm -f "${SYNSET}.tar"
 
   echo "Finished processing: ${SYNSET}"
-done < "${SYNSETS_FILE}"
+done < "${INITIAL_DIR}/${SYNSETS_FILE}"
